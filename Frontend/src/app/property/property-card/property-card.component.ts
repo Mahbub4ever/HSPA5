@@ -12,7 +12,7 @@ export class PropertyCardComponent {
     "Id":13,
     "Name":"Ayan House",
     "Type":"Villa",
-    "Price":130000
+    "Price":130000 //test
   }
 
 }
