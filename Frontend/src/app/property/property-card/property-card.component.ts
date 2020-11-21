@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IPropertyBase } from 'src/app/model/ipropertybase';
 
 @Component({
   selector: 'aap-property-card',
@@ -6,13 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: 'property-card.component.html',
   // styles: ['h1{font-weight:normal;}']
   styleUrls: ['property-card.component.css']
-})
+}
+)
+
 export class PropertyCardComponent {
-  Property: any = {
-    "Id":13,
-    "Name":"Ayan House",
-    "Type":"Villa",
-    "Price":130000 //test
-  }
+@Input() property: IPropertyBase;
+@Input() hideIcons: boolean;
 
 }
