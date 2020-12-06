@@ -94,13 +94,19 @@
 
               <div class="form-group col-12">
                 <label>City</label>
-                <input type="text"
-                class="form-control"
-                formControlName="City"
-                [(ngModel)]="propertyView.City">
+                <select
+                  class="form-control"
+                  formControlName="City"
+                  [(ngModel)]="propertyView.City">
+                  <option value="">--Select City--</option>
+                  <option *ngFor="let city of cityList"
+                    value={{city.id}}>
+                    {{city.name}}
+                  </option>
+                </select>
                 <div class="error-block"
                   *ngIf="City.invalid && (nextClicked || City.touched)">
-                  Please enter city
+                  Please select city
                 </div>
               </div>
 
@@ -175,7 +181,7 @@
               <div class="form-group col-12">
                 <label>Floor</label>
                 <input type="text"
-                formControlName="FlorNo"
+                formControlName="FloorNo"
                 class="form-control">
               </div>
 
@@ -238,7 +244,7 @@
                 <label>Possession/Avaialble From</label>
                 <input type="text"
                 class="form-control"
-                formControlName="PosessionOn"
+                formControlName="PossessionOn"
                 bsDatepicker
                 [bsConfig]="{containerClass: 'theme-dark-blue',
                 dateInputFormat: 'DD-MM-YYYY'}">

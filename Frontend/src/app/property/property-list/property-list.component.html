@@ -1,9 +1,27 @@
+
+<!-- India: {{ Today|date:'medium'|uppercase }} &nbsp;&nbsp; -->
+<!-- Netherlands: {{ Today |date:'medium':'GMT+1'|uppercase }} -->
+
+<label>Filter City: &nbsp; </label>
+<input [(ngModel)]='City'>
+<button type="button" (click)="onCityFilter()">Search</button>
+<button type="button" (click)="onCityFilterClear()">Clear</button>
+
+<label>Sort by &nbsp; </label>
+<select [(ngModel)] = 'SortbyParam'>
+  <option value="" selected>-Select-</option>
+  <option value="City">City</option>
+  <option value="Price">Price</option>
+</select>
+
+<button type="button" (click)="onSortDirection()">Sort</button>
+<i *ngIf="SortDirection==='asc'" class="fas fa-sort-alpha-down"></i>
+<i *ngIf="SortDirection==='desc'" class="fas fa-sort-alpha-up"></i>
+
 <div class="row">
-
-  <div *ngFor="let property of properties" class="shadow-lg col-sm-4 p-3">
-
-    <aap-property-card [property]="property"></aap-property-card>
-
+  <div *ngFor="let property of properties|filter:SearchCity:'City'|sort:[SortbyParam,SortDirection]" class="col-sm-4">
+    <div class="shadow-lg p-3 mb-4">
+      <aap-property-card [property]="property"></aap-property-card>
+    </div>
   </div>
-
 </div>
